@@ -9,14 +9,15 @@ void escitalaEspartana();
 void cifradoCesar();
 void cesarCifrar(char arrCesar[2][26]);
 char buscarCesarCifrar(char buscado,char arrCesar[2][26]);
+//--------------------------------------------------------------
 void tratamientoMatematico();
 char* convierteCadenaMayusculas(char cadena[],int longitudCadena);
 int regresaValorLetra(char letra);
 int realizaOperacioIndicada(int valorLetra);
 void imprimeDecodificacionOperaMetetico(int arreglo[],int longitud);
-
-// void tratamientoMatematico(); 
-// void metodoAtbash();
+//-------------------------------------------------------------- 
+void metodoAtbash();
+void codificaBash(int cadena[], int longitud);
 // void dobleCifrado();
 int main(){
     
@@ -31,7 +32,8 @@ int main(){
     case 3:
         tratamientoMatematico();
         break;
-    case 4:printf("123");
+    case 4:
+        metodoAtbash();
         break;
     case 5:printf("123");
         break;
@@ -196,6 +198,7 @@ char* convierteCadenaMayusculas(char cadena[],int longitudCadena){
 	}
     return cadena;
 }
+//comienza Tratamiento matemático
 /*----------------------------------------------------------------------------------------------------------------------------------------------*/
 void tratamientoMatematico(){
     char cadena[100];
@@ -270,10 +273,56 @@ void imprimeDecodificacionOperaMetetico(int arreglo[],int longitud){
     }
     printf("\n");
 }
+//Termina Tratamiento matemático
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-// void metodoAtbash(){
-
-// }
+//Comienza Tratamiento Atbash
+void metodoAtbash(){
+    char cadena[100];
+    int i=0, longitudCadena;
+    char letraBuscar;
+    int valorLetra;
+    int nuevoValor;
+    int valoresDePosicion[100];
+    int logitudDEArreglo_valoresDeCadenaCodificados;
+    printf("\n Estas en tratamiento matematico\n");
+    printf("Ingresa Cadena ");
+    scanf("%s",cadena);
+    fflush(stdin);
+    longitudCadena = strlen(cadena);
+    printf("La longitud es: %d",longitudCadena);
+    printf("\nVoy a imprimir nuevamente \n");
+    char *cadenaMayusculas; //Declaramos *cadenaMayusculas como para que pueda resivir la cadena convertida a mayusculas
+    cadenaMayusculas = convierteCadenaMayusculas(cadena,longitudCadena);
+    for(i=0;i<longitudCadena;i++){
+        printf("%c",cadenaMayusculas[i]);
+    }
+    printf("\n");
+    printf("Impresión de los valores de la tabla \n");
+    for(i=0; i<longitudCadena;i++){
+        letraBuscar = cadenaMayusculas[i];
+        valorLetra  = regresaValorLetra(letraBuscar);
+        valoresDePosicion[i]= valorLetra;
+        printf("%d ",valorLetra); 
+    }
+    printf("\n");
+    codificaBash(valoresDePosicion,longitudCadena);
+}
+void codificaBash(int arreglo[], int longitud){
+    int i = 0;
+    int j = 0;
+    char alfabeto[] ={'Z','Y','X','W','V','U','T','S','R','Q','P','O','N','M','L','K','J','I','H','G','F','E','D','C','B','A'};
+    printf("La cadena codificada es: ");
+    for(i=0; i< longitud; i++){
+        for (j = 0; j<26;j++){
+            if(arreglo[i] == j){
+                printf("%c",alfabeto[j]);
+            }
+        } 
+    }
+    printf("\n");
+}
+//Termina Tratamiento Atbash
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 // void dobleCifrado(){
     
 // }
