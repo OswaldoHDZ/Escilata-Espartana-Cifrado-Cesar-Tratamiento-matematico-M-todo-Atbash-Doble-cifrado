@@ -1,13 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<string.h> 
+#include <string.h> 
+#include <ctype.h>
+
 int espacioVaciosValidarEscitalaEspartana(char a[30] );
 void menu();//Menu principal
 void escitalaEspartana();
 void cifradoCesar();
 void cesarCifrar(char arrCesar[2][26]);
+void cesarDecifrar(char arrCesar[2][26]);
 char buscarCesarCifrar(char buscado,char arrCesar[2][26]);
-
+char buscarCesarDeCifrar(char buscado,char arrCesar[2][26]);
 
 // void tratamientoMatematico(); 
 // void metodoAtbash();
@@ -15,11 +18,6 @@ char buscarCesarCifrar(char buscado,char arrCesar[2][26]);
 int main(){
     
     int n;
-        // char[9] escitalaEspartana;
-        // char[9] escitalaEspartana;
-        // char[9] escitalaEspartana;
-        // char[9] escitalaEspartana;
-
         menu();
         scanf("%d",&n);
         switch (n)        {
@@ -41,7 +39,8 @@ return 0;
 }
 
 void menu(){
-    printf("---MENU---\n1. Escitala Espartana \n2. Cifrado Cesar \n3. Tratamiento matematico \n4. Método Atbash\n5. Doble cifrado");
+    printf("---MENU---\n\n1. Escitala Espartana \n2. Cifrado Cesar \n3. Tratamiento matematico \n4. Método Atbash\n5. Doble cifrado");
+    printf("\n\nOPCION: ");
 }
 void escitalaEspartana(){
     int i,j;
@@ -142,14 +141,14 @@ void cifradoCesar (){
     switch (n){
     case 1:cesarCifrar(arrCesar); //llama a la funcion que cifra
         break;
-    case 2:printf("2");
+    case 2:cesarDecifrar(arrCesar); //llama a la funcion que decifra
         break;
     default:printf("\nInvalido...");
         break;
     }
 }
 
-void cesarCifrar(char arrCesar[2][26]){
+void cesarDecifrar(char arrCesar[2][26]){
 
     int tam=0;
     printf("Introduce tam arreglo\n");
@@ -160,17 +159,47 @@ void cesarCifrar(char arrCesar[2][26]){
     scanf("%s",arr);
     fflush(stdin);
     printf("\n\n--Texto Introducido--");
-    printf("\n%s",arr);
+    printf("\n> %s",arr);
     printf("\n\n--Texto Cifrado--");
-    for(int k;k<tam;k++){
-    printf("%c",buscarCesarCifrar(arr[k],arrCesar));
+    printf("\n> ");
 
+    for(int k=0;k<tam;k++){//CONSTRU CIFRADO 
+        printf("%c",buscarCesarDeCifrar(toupper(arr[k]),arrCesar));
     }
-    printf("---------->%c",buscarCesarCifrar('B',arrCesar));
-    for (int i = 0; i < tam; i++){
-        printf("%d",i);
-    }
+    printf("\n");
+}
 
+
+void cesarCifrar(char arrCesar[2][26]){
+
+    int tam=0;
+    printf("Introduce tam arreglo\n");
+    scanf("%d",&tam);
+    fflush(stdin);//limpia el buffer si no marca error
+    char arr[tam];
+    printf("Introduce texto a decifrar:\n");
+    scanf("%s",arr);
+    fflush(stdin);
+    printf("\n\n--Texto Introducido--");
+    printf("\n> %s",arr);
+    printf("\n\n--Texto decifrado--");
+    printf("\n> ");
+
+    for(int k=0;k<tam;k++){//CONSTRU CIFRADO 
+        printf("%c",buscarCesarCifrar(toupper(arr[k]),arrCesar));
+    }
+    printf("\n");
+}
+
+char buscarCesarDeCifrar(char buscado,char arrCesar[2][26]){
+int i;
+char a='*';
+    for(i=0;i<26;i++){
+      if( buscado==arrCesar[1][i]){
+          a=arrCesar[0][i];
+      } 
+    }
+return a;
 }
 
 char buscarCesarCifrar(char buscado,char arrCesar[2][26]){
