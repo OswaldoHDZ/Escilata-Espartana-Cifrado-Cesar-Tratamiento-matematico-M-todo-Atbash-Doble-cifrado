@@ -63,7 +63,7 @@ void escitalaEspartana(){
     printf("Ingresa Cadena\n");
     scanf("%s",escitalaEspartana1);
     fflush(stdin);
-    if(espacioVaciosValidarEscitalaEspartana(escitalaEspartana1)==0){
+   // if(espacioVaciosValidarEscitalaEspartana(escitalaEspartana1)==0){
     printf("Ingresa Tama De Cadena\n");
     scanf("%d",&tamCad);
         for(i=0;i<3;i++){
@@ -105,9 +105,9 @@ void escitalaEspartana(){
         printf("\n");
 
 
-    }else{
-                printf("Tienes espacios\n");
-    }
+    // }else{
+    //             printf("Tienes espacios\n");
+    // }
 }
 //verifica espacioes si es 1 hay espacios
 int espacioVaciosValidarEscitalaEspartana(char a[] ){
