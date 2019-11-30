@@ -14,10 +14,11 @@ void tratamientoMatematico();
 char* convierteCadenaMayusculas(char cadena[],int longitudCadena);
 int regresaValorLetra(char letra);
 int realizaOperacioIndicada(int valorLetra);
-void imprimeDecodificacionOperaMetetico(int arreglo[],int longitud);
+char* imprimeCodificacionOperaMetetico(int arreglo[],int longitud, char cadenaCodificada[]);
+int realizaOperacioIndicadaDepeje(int valorLetra);
 //-------------------------------------------------------------- 
 void metodoAtbash();
-void codificaBash(int cadena[], int longitud);
+char* codificaBash(int arreglo[], int longitud,char cadenaCodificada[]);
 // void dobleCifrado();
 int main(){
     
@@ -236,13 +237,31 @@ void tratamientoMatematico(){
         printf("%d ",nuevoValor); //Si no quieres que imprima los valores, solo quita este printf
     }
     printf("\n");
-    imprimeDecodificacionOperaMetetico(valoresDeCadenaCodificados,longitudCadena);
+    char cadenaCodificada[longitudCadena];
+    char *cadenaCodi;
+    cadenaCodi = imprimeCodificacionOperaMetetico(valoresDeCadenaCodificados,longitudCadena,cadenaCodificada);
+    printf("Apartir de aqui camos adecodificar la cadena\n");
+    for(i=0; i<longitudCadena;i++){
+        printf("%c",cadenaCodi[i]);
+    }
+
+    printf("\n");
     //Imprimimos el valor de los elementos
-    
+    //Vamos a decodificar
+    for(i=0; i<longitudCadena;i++){
+        letraBuscar = cadenaCodi[i];
+        valorLetra  = regresaValorLetra(letraBuscar);
+        nuevoValor  = realizaOperacioIndicadaDepeje(valorLetra);
+        valoresDeCadenaCodificados[i]= nuevoValor;
+        printf("%d ",nuevoValor); //Si no quieres que imprima los valores, solo quita este printf
+    }
+    printf("\n");
+    imprimeCodificacionOperaMetetico(valoresDeCadenaCodificados,longitudCadena,cadenaCodificada);
 }
 //Esta funcion dada una letra regresa el valor de la letra deacuerdo a la tabla que es ta en el PDF en el punto Tratamiento matemático
 int regresaValorLetra(char letra){
     char alfabeto[] ={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+
     int i;
     for (i=0;i<26;i++){
         if(letra == alfabeto[i]){ //Regresamos el valor de i porque es la posición correspondiente al valor de la letra
@@ -258,8 +277,19 @@ int realizaOperacioIndicada(int valorLetra){
     nuevoValor = (valorLetra + 3) % 26;
     return nuevoValor;
 }
+int realizaOperacioIndicadaDepeje(int valorLetra){
+    int nuevoValor;
+    nuevoValor = (valorLetra /  (1 % 26 )) -3;
+    if(nuevoValor == -3)
+        nuevoValor = 23;
+    if(nuevoValor == -2)
+        nuevoValor = 24;
+    if(nuevoValor == -1)
+        nuevoValor = 25;
+    return nuevoValor;
+}
 //Decodifica el valor de cada letra
-void imprimeDecodificacionOperaMetetico(int arreglo[],int longitud){
+char* imprimeCodificacionOperaMetetico(int arreglo[],int longitud, char cadenaCodificada[]){
     int i = 0;
     int j = 0;
     char alfabeto[] ={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
@@ -268,10 +298,12 @@ void imprimeDecodificacionOperaMetetico(int arreglo[],int longitud){
         for (j = 0; j<26;j++){
             if(arreglo[i] == j){
                 printf("%c",alfabeto[j]);
+                cadenaCodificada[i] = alfabeto[j];
             }
         } 
     }
     printf("\n");
+    return cadenaCodificada;
 }
 //Termina Tratamiento matemático
 //-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -305,21 +337,41 @@ void metodoAtbash(){
         printf("%d ",valorLetra); 
     }
     printf("\n");
-    codificaBash(valoresDePosicion,longitudCadena);
+    char cadenaCodificada[longitudCadena];
+    char *cadenaCodi;
+    printf("La cadena codificada es: \n");
+    cadenaCodi = codificaBash(valoresDePosicion,longitudCadena,cadenaCodificada);
+    printf("Apartir de aquí vamos a decodificar la cadena\n");
+    for(i=0; i<longitudCadena;i++){
+        printf("%c",cadenaCodi[i]);
+    }
+    printf("\n");
+    for(i=0; i<longitudCadena;i++){
+        letraBuscar = cadenaCodi[i];
+        valorLetra  = regresaValorLetra(letraBuscar);
+        valoresDePosicion[i]= valorLetra;
+        printf("%d ",valorLetra); //Si no quieres que imprima los valores, solo quita este printf
+    }
+    printf("\n");
+    printf("La cadena decodificada es: \n");
+    codificaBash(valoresDePosicion,longitudCadena,cadenaCodificada);
+    printf("\n");
 }
-void codificaBash(int arreglo[], int longitud){
+char* codificaBash(int arreglo[], int longitud,char cadenaCodificada[]){
     int i = 0;
     int j = 0;
     char alfabeto[] ={'Z','Y','X','W','V','U','T','S','R','Q','P','O','N','M','L','K','J','I','H','G','F','E','D','C','B','A'};
-    printf("La cadena codificada es: ");
+    
     for(i=0; i< longitud; i++){
         for (j = 0; j<26;j++){
             if(arreglo[i] == j){
                 printf("%c",alfabeto[j]);
+                cadenaCodificada[i] = alfabeto[j];
             }
         } 
     }
     printf("\n");
+    return cadenaCodificada;
 }
 //Termina Tratamiento Atbash
 //-----------------------------------------------------------------------------------------------------------------------------------------------
