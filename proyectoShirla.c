@@ -3,7 +3,7 @@
 #include <string.h> 
 #include <ctype.h>
 
-int espacioVaciosValidar(char a[100],int tam );
+int espacioVaciosValidarEscitalaEspartana(char a[30] );
 void menu();//Menu principal
 void escitalaEspartana();
 void cifradoCesar();
@@ -14,16 +14,12 @@ char buscarCesarDeCifrar(char buscado,char arrCesar[2][26]);
 
 // void tratamientoMatematico(); 
 // void metodoAtbash();
-void dobleCifrado();
-char regresaSifradoUno(char buscado,char arr[3][26]);
-char regresaSifradoDos(char buscado,char arr[3][26]);
-
+// void dobleCifrado();
 int main(){
     
     int n;
         menu();
         scanf("%d",&n);
-        fflush(stdin);
         switch (n)        {
         case 1:escitalaEspartana();
             break;
@@ -33,7 +29,7 @@ int main(){
             break;
         case 4:printf("123");
             break;
-        case 5:dobleCifrado();
+        case 5:printf("123");
             break;
 
         default:printf("Error\n");
@@ -53,7 +49,7 @@ void escitalaEspartana(){
     int tamCad=0;
     char escitalaEspartana1 [30];
     char escitalaEspartana [3][9];
-    //system("cls");
+    system("cls");
     for(i=0;i<30;i++){
         escitalaEspartana1[i]='*';
     }
@@ -64,13 +60,12 @@ void escitalaEspartana(){
             }
         }
         cont=0;
-    
-    printf("Ingresa Tama De Cadena\n");
-    scanf("%d",&tamCad);
-    fflush(stdin);
     printf("Ingresa Cadena\n");
     scanf("%s",escitalaEspartana1);
-    if(espacioVaciosValidar(escitalaEspartana1,30)==0){
+    fflush(stdin);
+   // if(espacioVaciosValidarEscitalaEspartana(escitalaEspartana1)==0){
+    printf("Ingresa Tama De Cadena\n");
+    scanf("%d",&tamCad);
         for(i=0;i<3;i++){
             for(j=0;j<9;j++){
                 if(cont<tamCad){
@@ -110,20 +105,19 @@ void escitalaEspartana(){
         printf("\n");
 
 
-    }else{
-                printf("Tienes espacios\n");
-    }
+    // }else{
+    //             printf("Tienes espacios\n");
+    // }
 }
-
 //verifica espacioes si es 1 hay espacios
-int espacioVaciosValidar(char a[],int tam ){
-    int i,j=0;
-    for(i=0;i<tam;i++){
+int espacioVaciosValidarEscitalaEspartana(char a[] ){
+    int i=0;
+    for(i=0;i<30;i++){
             if(a[i]==' '){
-                j= 1;
+                i= 1;
             }
     }
-    return j;
+    return i;
 }
 
 void cifradoCesar (){
@@ -164,9 +158,6 @@ void cesarDecifrar(char arrCesar[2][26]){
     printf("Introduce texto a cifrar:\n");
     scanf("%s",arr);
     fflush(stdin);
-
-
-   if(espacioVaciosValidar(arr,tam)==0){
     printf("\n\n--Texto Introducido--");
     printf("\n> %s",arr);
     printf("\n\n--Texto Cifrado--");
@@ -176,10 +167,6 @@ void cesarDecifrar(char arrCesar[2][26]){
         printf("%c",buscarCesarDeCifrar(toupper(arr[k]),arrCesar));
     }
     printf("\n");
-    }else{
-                printf("Tienes espacios\n");
-    }
-
 }
 
 
@@ -193,21 +180,15 @@ void cesarCifrar(char arrCesar[2][26]){
     printf("Introduce texto a decifrar:\n");
     scanf("%s",arr);
     fflush(stdin);
-
-
-    if(espacioVaciosValidar(arr,tam)==0){
     printf("\n\n--Texto Introducido--");
     printf("\n> %s",arr);
-    printf("\n\n--Texto Decifrado--");
+    printf("\n\n--Texto decifrado--");
     printf("\n> ");
 
     for(int k=0;k<tam;k++){//CONSTRU CIFRADO 
         printf("%c",buscarCesarCifrar(toupper(arr[k]),arrCesar));
     }
     printf("\n");
-    }else{
-                printf("Tienes espacios\n");
-    }
 }
 
 char buscarCesarDeCifrar(char buscado,char arrCesar[2][26]){
@@ -238,80 +219,6 @@ return a;
 // void metodoAtbash(){
 
 // }
-
-void dobleCifrado(){
-    int tam=0,i;
-    char arrDobleCifrado[3][26]={{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'},
-                                {'F','R','J','O','Y','D','I','Q','T','Z','S','L','M','E','U','N','B','K','W','A','H','P','C','X','G','V'},
-                                {'H','T','R','V','Z','D','I','Q','J','Y','P','E','L','M','U','B','N','K','A','W','F','S','X','C','G','O'}};
-    printf("--DOBLE CIFRADO--\n\n");
-
-    printf("\n--TABLA DOBLE CIFRADO--\n");
-
-    for (int p = 0; p < 3; p++)
-    {
-        for (int q = 0; q < 26; q++)
-        {
-          printf("%c",arrDobleCifrado[p][q]);
-
-        }
-         printf("\n");
-    }
-         printf("\n");
+// void dobleCifrado(){
     
-
-    printf("Tamanio de texto:\n");
-    scanf("%d",&tam);
-
-    char cifrado[tam];
-    char cifradoTem[tam];
-
-    printf("Introduce texto:\n");
-    scanf("%s",cifrado);
-
-    if(espacioVaciosValidar(cifrado,tam)==0){
-
- 
-    fflush(stdin);
-    printf("\n\n--Texto Introducido--");
-    printf("\n> %s",cifrado);
-//sifrado uno
-printf("\n\n--Sifrado uno--");
-    for (i = 0; i < tam; i++){
-        cifradoTem[i]=regresaSifradoUno(toupper(cifrado[i]),arrDobleCifrado);
-    }
-    printf("\n> %s",cifradoTem);
-//sifrado dos
-    printf("\n\n--Sifrado dos--");
-    for (i = 0; i < tam; i++){
-       cifrado[i]= regresaSifradoDos(toupper(cifradoTem[i]),arrDobleCifrado);
-       
-    }
-    printf("\n> %s",cifrado);
-    printf("\n");
-   }else{
-            printf("Tienes espacios\n");
-   }
-}
-
-char regresaSifradoUno(char buscado,char arr[3][26]){
-int i;
-char a='*';
-    for(i=0;i<26;i++){
-      if( buscado==arr[0][i]){
-          a= arr[1][i];
-      } 
-    }
-return a;
-}
-
-char regresaSifradoDos(char buscado,char arr[3][26]){
-int i;
-char a='*';
-    for(i=0;i<26;i++){
-      if( buscado==arr[1][i]){
-          a= arr[2][i];
-      } 
-    }
-return a;
-}
+// }
