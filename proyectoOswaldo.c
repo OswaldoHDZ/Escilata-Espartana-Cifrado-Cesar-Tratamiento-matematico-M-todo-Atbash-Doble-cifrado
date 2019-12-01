@@ -27,8 +27,10 @@ void dobleCifrado();
 //--------------------------------------------------------------
 char regresaSifradoUno(char buscado,char arr[3][26]);
 char regresaSifradoDos(char buscado,char arr[3][26]);
-
+char regresaDecifradoDos(char buscado,char arr[3][26]);
+char regresaDecifradoUno(char buscado,char arr[3][26]);
 char* convierteCadenaMayusculas(char cadena[],int longitudCadena);
+
 int main(){
     
     int n;
@@ -217,7 +219,7 @@ void cesarCifrar(char arrCesar[2][26]){
     if(espacioVaciosValidar(arr,tam)==0){
     printf("\n\n--Texto Introducido--");
     printf("\n> %s",arr);
-    printf("\n\n--Texto Decifrado--");
+    printf("\n\n--Texto Cifrado--");
     printf("\n> ");
 
     for(k=0;k<tam;k++){//CONSTRU CIFRADO 
@@ -485,6 +487,25 @@ printf("\n\n--Sifrado uno--");
     }
     printf("\n> %s",cifrado);
     printf("\n");
+    printf("\nApartir de aqui vamos a decifrar el mensaje\n >");
+    for(i=0; i < tam; i++){
+        printf("%c",cifrado[i]); 
+    }
+    printf("\n");
+    for (i = 0; i < tam; i++){
+       cifrado[i]= regresaDecifradoDos(toupper(cifrado[i]),arrDobleCifrado);
+    }
+    printf("\nDecifrado dos al uno\n >");
+    for(i=0; i < tam; i++){
+        printf("%c",cifrado[i]); 
+    }
+    printf("\nDecifrado del uno a texto normal\n >");
+    for(i=0; i < tam; i++){
+        cifrado[i]= regresaDecifradoUno(toupper(cifrado[i]),arrDobleCifrado);
+    }
+    for(i=0; i < tam; i++){
+        printf("%c",cifrado[i]); 
+    }
    }else{
             printf("Tienes espacios\n");
    }
@@ -507,6 +528,26 @@ char regresaSifradoDos(char buscado,char arr[3][26]){
 	    for(i=0;i<26;i++){
 	      if( buscado==arr[1][i]){
 	          a= arr[2][i];
+	      } 
+	    }
+	return a;
+}
+char regresaDecifradoDos(char buscado,char arr[3][26]){
+    int i;
+	char a='*';
+	    for(i=0;i<26;i++){
+	      if( buscado==arr[2][i]){
+	          a=arr[1][i];
+	      } 
+	    }
+	return a;
+}
+char regresaDecifradoUno(char buscado,char arr[3][26]){
+    int i;
+	char a='*';
+	    for(i=0;i<26;i++){
+	      if( buscado==arr[1][i]){
+	          a=arr[0][i];
 	      } 
 	    }
 	return a;
