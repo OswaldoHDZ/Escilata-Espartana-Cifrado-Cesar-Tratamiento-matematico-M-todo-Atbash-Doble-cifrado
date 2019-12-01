@@ -70,6 +70,8 @@ void escitalaEspartana(){
     int tamCad=0;
     char escitalaEspartana1 [30];
     char escitalaEspartana [3][9];
+    char decifradoEscitalaEspartana [3][9];
+
     //system("cls");
     for(i=0;i<30;i++){
         escitalaEspartana1[i]='*';
@@ -117,11 +119,23 @@ void escitalaEspartana(){
         printf("\n---Cifrado:---\n");
         for(j=0;j<9;j++){
             for(i=0;i<3;i++){
+                decifradoEscitalaEspartana[i][j]=escitalaEspartana [i][j];
                 if(escitalaEspartana [i][j]!='*'){
                     printf("%c",escitalaEspartana [i][j]);
                 }
-                }
+            }
         }
+        
+        printf("\n---De cifrado:---\n");
+        for(i=0;i<3;i++){
+            for(j=0;j<9;j++){
+                if(decifradoEscitalaEspartana[i][j]!='*'){
+                    printf("%c",decifradoEscitalaEspartana[i][j]);
+                }
+             }
+        }
+
+        printf("\n");
     }else{
         printf("\n");
         printf("La cadena tiene espacios");
