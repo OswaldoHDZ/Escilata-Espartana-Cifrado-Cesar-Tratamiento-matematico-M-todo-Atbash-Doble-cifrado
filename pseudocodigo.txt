@@ -1,0 +1,553 @@
+
+Entero main(){
+    
+    Entero n;
+        menu();
+        Leer  n
+        
+        SEGUN (n) HACER {       {
+        SI 1 ENTONCES 
+            escitalaEspartana();
+
+        SI 2 ENTONCES 
+            cSI radoCesar();
+
+        SI 3 ENTONCES 
+            tratamientoMatematico();
+        SI 4 ENTONCES 
+            metodoAtbash();
+        SI 5 ENTONCES dobleCSI rado();
+
+
+        default:Escribir 'Error'
+
+        }
+return 0;
+}
+
+Procedimiento menu(){
+    Escribir '---MENU---1. Escilata Espartana 2. CSI rado Cesar 3. Tratamiento matematico 4. Método Atbash5. Doble cSI rado'
+    Escribir 'OPCION: '
+}
+
+
+//Esta función realiza el cSI rado con escitalaEspartana
+Procedimiento escitalaEspartana(){
+    Entero i,j; //Contadores 
+    Entero cont<-0; //Contador para recor hasta er  hacer a escitalaEspartana
+    Entero tamCad<-0; //Tamaño de la cadea que lo vamos a obtener con strlen : http://www.para osdel hasta eb. hacer om/f96/obtener-tamano-array-dinamico-568584/
+    Caracter escitalaEspartana1 [30];  //Esta es la escitala
+    Caracter escitalaEspartana [3][9]; //Aqui vamos a meter los valores de la cadena uno por uno
+    Caracter decSI radoEscitalaEspartana [3][9]; //Aqui vamos a meter los valores cSI rados
+
+    //system('cls'
+    para (i<-0 hasta i<3 hacer ;i++){
+        escitalaEspartana1[i]<-'*';
+    }
+    para (i<-0 hasta i<3 hacer i++){
+        para (j<-0 hasta j<9 hacer j++){
+            escitalaEspartana [i][j]<-escitalaEspartana1[cont];
+            cont++;
+        }
+    }
+    cont<-0;
+    
+    Escribir 'Ingresa Cadena'
+    Leer (escitalaEspartana1);
+    tamCad <- strlen(escitalaEspartana1);
+    SI (espacioVaciosValidar(escitalaEspartana1,tamCad)==0||verificaCadenaSinNumero(arr)==0) {
+        para (i<-0 hasta i<3 hacer i++){
+            para (j<-0 hasta j<9 hacer j++){
+                SI (cont<tamCad){
+                    escitalaEspartana [i][j]<-escitalaEspartana1[cont];
+                    cont++;
+                }
+            }
+        }
+        Escribir 'Entrada:'
+        cont<-0;
+        para (i<-0 hasta i<3 hacer i++){
+            para (j<-0 hasta j<9 hacer j++){
+                SI (cont<tamCad){
+                    Escribir '%c',escitalaEspartana [i][j]);
+                cont++;
+
+                }
+            }
+        }
+
+        Escribir '---Matriz:---'
+        para (i<-0 hasta i<3 hacer i++){
+            para (j<-0 hasta j<9 hacer j++){
+                    Escribir '%c',escitalaEspartana [i][j]);
+                }
+                    
+        }
+        
+        Escribir '---CSI rado:---'
+        para (j<-0 hasta j<9 hacer j++){
+            para (i<-0 hasta i<3 hacer i++){
+                decif radoEscitalaEspartana[i][j]<-escitalaEspartana [i][j];
+                SI (escitalaEspartana [i][j]!<-'*'){
+                    Escribir '%c',escitalaEspartana [i][j]);
+                }
+            }
+        }
+        
+        Escribir '---De cSI rado:---'
+        para (i<-0 hasta i<3 hacer i++){
+            para (j<-0 hasta j<9 hacer j++){
+                SI (decif radoEscitalaEspartana[i][j]!<-'*'){
+                    Escribir '%c',decSI radoEscitalaEspartana[i][j]);
+                }
+             }
+        }
+
+        
+    }SINO{
+        
+        Escribir 'La cadena tiene espacios o numeros'
+    }
+    
+}
+//Termina Escilata Espartana
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+//Comienza CSI rado Cesar
+//La siguiente función realiza el cSI rado y decSI rado Cesar | Contiene un menu para saber hasta si  hacer uieres cSI rar o decSI rar un mensaje
+Procedimiento cSI radoCesar (){
+    system('cls'
+    Entero n,j,i; //contadoes
+    //La siguiente matriz contiene la metriz del cSI rado
+    Caracter arrCesar[2][26]<-{{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'},
+                          {'X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W'}};
+    
+    Escribir '---CESAR---'
+    Escribir '--Caesar cipher table--'
+    //imprime tabla cesar 
+    para (i<-0 hasta i<2 hacer i++){
+        para (j<-0 hasta j<2 hacer ;j++){
+            Escribir '%c',arrCesar[i][j]);
+        }
+            
+    }
+    
+    Escribir '1) cSI rar2) descSI rar'
+    Leer  n//selecciona opcion
+    
+    SEGUN (n) HACER {
+    SI 1 ENTONCES cesarCif rar(arrCesar); //llama a la funcion que cSI ra
+    SI 2 ENTONCES cesarDecif rar(arrCesar); //llama a la funcion que decSI ra
+    default:Escribir 'Invalido...'
+    }
+}
+//La siguiente función DecSI ra un mensaje
+Procedimiento cesarDecSI rar(Caracter arrCesar[2][26]){
+
+    Entero tam<-0; //contiene el tamaño de la cadena
+    Entero k;     //Es un contedor para recor hasta er  hacer a cadena
+    //limpia el buffer si no marca error
+    Caracter arr[tam]; //contiene la cadena
+    Escribir 'Enteroroduce texto a cSI rar:'
+    Leer (arr);
+    
+
+    tam <- strlen(arr);
+   SI (espacioVaciosValidar(arr,tam)==0  || verificaCadenaSinNumero(arr)==0){
+    Escribir '--Texto Enteroroducido--'
+    Escribir '> %s',arr);
+    Escribir '--Texto CSI rado--'
+    Escribir '> '
+
+    para (k<-0 hasta k<t hacer m;k++){//CONSTRU CSI RADO 
+        Escribir '%c',buscarCesarDeCSI rar(toupper(arr[k]),arrCesar));
+    }
+    
+    }SINO{
+                Escribir 'Tienes espacios o números'
+    }
+
+}
+
+//La siguiente función cSI ra un mensaje con el metodo cesar
+Procedimiento cesarCSI rar(Caracter arrCesar[2][26]){
+
+    Entero tam<-0; //contiene el tamaño del arreglo
+    Entero k;    //Recorre el arreglo
+    
+    //limpia el buffer si no marca error
+    Caracter arr[tam];
+    Escribir 'Enteroroduce texto a decSI rar:'
+    Leer (arr);
+    
+
+    tam <- strlen(arr);
+    SI (espacioVaciosValidar(arr,tam)==0){
+    Escribir '--Texto Enteroroducido--'
+    Escribir '> %s',arr);
+    Escribir '--Texto CSI rado--'
+    Escribir '> '
+
+    para (k<-0 hasta k<t hacer m;k++){//CONSTRU CSI RADO 
+        Escribir '%c',buscarCesarCSI rar(toupper(arr[k]),arrCesar));
+    }
+    
+    }SINO{
+                Escribir 'Tienes espacios'
+    }
+}
+//Dea cuerdo a una letra la busca en la matriz de cesar, en cuanto encuetra la letra regresa la posición (letra) pero la que esta arriba de la matriz, una posición arriba
+Caracter buscarCesarDeCSI rar(Caracter buscado,Caracter arrCesar[2][26]){
+Entero i; //Para recor hasta er  hacer as filas de la matriz
+Caracter a<-'*'; //Regresa la letra de la metriz
+    para (i<-0 hasta i<2 hacer ;i++){
+      SI ( buscado==arrCesar[1][i]){
+          a<-arrCesar[0][i];
+      } 
+    }
+return a;
+}
+//Dea cuerdo a una letra la busca en la matriz de cesar, en cuanto encuetra la letra regresa la posición (letra) pero la que esta abajo de la matriz, una posición abajo
+Caracter buscarCesarCSI rar(Caracter buscado,Caracter arrCesar[2][26]){
+Entero i; //Para recor hasta er  hacer as filas
+Caracter a<-'*'; //Regresa la letra de la metriz
+    para (i<-0 hasta i<2 hacer ;i++){
+      SI ( buscado==arrCesar[0][i]){
+          a<- arrCesar[1][i];
+      } 
+    }
+return a;
+}
+//Termina CSI rado cesar
+//comienza Tratamiento matemático
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+//Esta funcuín lee una cadena y la cSI ra deacurdo al tratamiento matematicp
+Procedimiento tratamientoMatematico(){
+    Caracter cadena[100]; //Aqui guardamos la cadena a cSI rar
+    Entero i<-0, longitudCadena; //i : contador, longitudCadena: guardamos la logitud de la cadena
+    Caracter letraBuscar;       //La utilizaremos para saber hasta que hacer letra vamos sar su valor deacurdo a la tabla 
+    Entero valorLetra;         //Guardamos el valor de la letra
+    Entero nuevoValor;         //Realizamos la operación y tendra un nuevo valor para busca hasta lo  hacer n la tabla
+    Entero valoresDeCadenaCodSI icados[100]; //Aqui vamos a guardar los valores codSI icados
+    Entero logitudDEArreglo_valoresDeCadenaCodSI icados; //Vamos a calcular la logitud del arreglo que tiene los valores de las letras ya calculados
+    Escribir ' Estas en tratamiento matematico'
+    Escribir 'Ingresa Cadena '
+    Leer (cadena);
+    
+    longitudCadena <- strlen(cadena);
+    SI (espacioVaciosValidar(cadena,longitudCadena)==0 || verificaCadenaSinNumero(arr)==0 ) {
+        Escribir 'La longitud es: %d',longitudCadena);
+        Escribir 'Voy a imprimir nuevamente '
+        Caracter *cadenaMayusculas; //Declaramos *cadenaMayusculas como para que p hasta eda hacer resivir la cadena convertida a mayusculas
+        cadenaMayusculas <- convierteCadenaMayusculas(cadena,longitudCadena);
+        para (i<-0 hasta i<l hacer ;i++){
+            Escribir '%c',cadenaMayusculas[i]);
+        }
+        
+        para (i<-0 hasta  i< hacer ongitudCadena;i++){
+            letraBuscar <- cadenaMayusculas[i];
+            valorLetra  <- regresaValorLetra(letraBuscar);
+            Escribir '%d ',valorLetra); 
+        }
+        
+        //El siguiente para  impr hasta me  hacer os valores convertidos con la operción
+        para (i<-0 hasta  i< hacer ongitudCadena;i++){
+            letraBuscar <- cadenaMayusculas[i];
+            valorLetra  <- regresaValorLetra(letraBuscar);
+            nuevoValor  <- realizaOperacioIndicada(valorLetra);
+            valoresDeCadenaCodSI icados[i]<- nuevoValor;
+            Escribir '%d ',nuevoValor); //Si no quieres que imprima los valores, solo quita este prEnterof
+        }
+        
+        Caracter cadenaCodSI icada[longitudCadena]; //La utilizaremos para decod hasta fic hacer r la cadena
+        Caracter *cadenaCodi;                      //La cadena en mayusculas, lo ponemos con Caracter* porque sí lo reciviremos en la cunnción de realiza esto 
+        cadenaCodi <- imprimeCodSI icacionOperaMetetico(valoresDeCadenaCodSI icados,longitudCadena,cadenaCodSI icada);
+        Escribir 'Apartir de aqui camos adecodSI icar la cadena'
+        para (i<-0 hasta  i< hacer ongitudCadena;i++){
+            Escribir '%c',cadenaCodi[i]);
+        }
+
+        
+        //Imprimimos el valor de los elementos
+        //Vamos a decodSI icar
+        para (i<-0 hasta  i< hacer ongitudCadena;i++){
+            letraBuscar <- cadenaCodi[i];
+            valorLetra  <- regresaValorLetra(letraBuscar);
+            nuevoValor  <- realizaOperacioIndicadaDepeje(valorLetra);
+            valoresDeCadenaCodSI icados[i]<- nuevoValor;
+            Escribir '%d ',nuevoValor); //Si no quieres que imprima los valores, solo quita este prEnterof
+        }
+        
+        imprimeCodSI icacionOperaMetetico(valoresDeCadenaCodSI icados,longitudCadena,cadenaCodSI icada);
+    }SINO {
+        Escribir 'Tienes espacios'
+    }
+}
+//Esta funcion dada una letra regresa el valor de la letra deacuerdo a la tabla que es ta en el PDF en el punto Tratamiento matemático
+Entero regresaValorLetra(Caracter letra){
+    Caracter alfabeto[] <-{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    Entero i;
+    para  (i<- hasta ;i< hacer 6;i++){
+        SI (letra == alfabeto[i]){ //Regresamos el valor de i porque es la posición correspondiente al valor de la letra
+            return i;
+        }
+    }
+    return 0;
+}
+//Realizar la operación indicada: C <- (15 + 3) (mód 26) <- 18.
+//Deacuerdo al valor de la letra seralizamos la operación
+Entero realizaOperacioIndicada(Entero valorLetra){
+    Entero nuevoValor; //Guardara el nuevo valor de la letra con operación
+    nuevoValor <- (valorLetra + 3) % 26; 
+    return nuevoValor;
+}
+//Calcula el valor inicial antes de que se realizara el tratamiento matematico
+Entero realizaOperacioIndicadaDepeje(Entero valorLetra){
+    Entero nuevoValor; //Es la operación pero despejada para calcu hasta ar  hacer l valor inicial
+    nuevoValor <- (valorLetra /  (1 % 26 )) -3;
+    SI (nuevoValor == -3)
+        nuevoValor <- 23;
+    SI (nuevoValor == -2)
+        nuevoValor <- 24;
+    SI (nuevoValor == -1)
+        nuevoValor <- 25;
+    return nuevoValor;
+}
+//DecodSI ica el valor de cada letra
+Caracter* imprimeCodSI icacionOperaMetetico(Entero arreglo[],Entero longitud, Caracter cadenaCodSI icada[]){
+    Entero i <- 0; //recorre el arrelgo
+    Entero j <- 0; //recorre el arrelgo
+    Caracter alfabeto[] <-{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    Escribir 'La cadena codSI icada es: '
+    para (i<-0 hasta  i< hacer longitud; i++){
+        para  (j < hasta  0; hacer j<26;j++){
+            SI (arreglo[i] == j){
+                Escribir '%c',alfabeto[j]);
+                cadenaCodSI icada[i] <- alfabeto[j];
+            }
+        } 
+    }
+    
+    return cadenaCodSI icada;
+}
+//Termina Tratamiento matemático
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+//Comienza Tratamiento Atbash
+Procedimiento metodoAtbash(){
+    Caracter cadena[100];
+    Entero i<-0, longitudCadena;
+    Caracter letraBuscar;
+    Entero valorLetra;
+    Entero nuevoValor;
+    Entero valoresDePosicion[100];
+    Entero logitudDEArreglo_valoresDeCadenaCodSI icados;
+    Escribir ' Estas en tratamiento matematico'
+    Escribir 'Ingresa Cadena '
+    Leer (cadena);
+    
+    longitudCadena <- strlen(cadena);
+    SI (espacioVaciosValidar(cadena,longitudCadena)==0  || verificaCadenaSinNumero(arr)==0) {
+        Escribir 'La longitud es: %d',longitudCadena);
+        Escribir 'Voy a imprimir nuevamente '
+        Caracter *cadenaMayusculas; //Declaramos *cadenaMayusculas como para que p hasta eda hacer resivir la cadena convertida a mayusculas
+        cadenaMayusculas <- convierteCadenaMayusculas(cadena,longitudCadena);
+        para (i<-0 hasta i<l hacer ngitudCadena;i++){
+            Escribir '%c',cadenaMayusculas[i]);
+        }
+        
+        Escribir 'Impresión de los valores de la tabla '
+        para (i<-0 hasta  i< hacer ongitudCadena;i++){
+            letraBuscar <- cadenaMayusculas[i];
+            valorLetra  <- regresaValorLetra(letraBuscar);
+            valoresDePosicion[i]<- valorLetra;
+            Escribir '%d ',valorLetra); 
+        }
+        
+        Caracter cadenaCodSI icada[longitudCadena];
+        Caracter *cadenaCodi;
+        Escribir 'La cadena codSI icada es: '
+        cadenaCodi <- codSI icaBash(valoresDePosicion,longitudCadena,cadenaCodSI icada);
+        Escribir 'Apartir de aquí vamos a decodSI icar la cadena'
+        para (i<-0 hasta  i< hacer ongitudCadena;i++){
+            Escribir '%c',cadenaCodi[i]);
+        }
+        
+        para (i<-0 hasta  i< hacer ongitudCadena;i++){
+            letraBuscar <- cadenaCodi[i];
+            valorLetra  <- regresaValorLetra(letraBuscar);
+            valoresDePosicion[i]<- valorLetra;
+            Escribir '%d ',valorLetra); //Si no quieres que imprima los valores, solo quita este prEnterof
+        }
+        
+        Escribir 'La cadena decodSI icada es: '
+        codSI icaBash(valoresDePosicion,longitudCadena,cadenaCodSI icada);
+        
+    }SINO {
+        Escribir 'Tienes espacios'
+    }
+}
+//Regresa la codena codSI icada deacuerdo al metodo bash
+Caracter* codSI icaBash(Entero arreglo[], Entero longitud,Caracter cadenaCodSI icada[]){
+    Entero i <- 0; //Recorre el vector
+    Entero j <- 0; //Recorre el vector
+    Caracter alfabeto[] <-{'Z','Y','X','W','V','U','T','S','R','Q','P','O','N','M','L','K','J','I','H','G','F','E','D','C','B','A'};
+    
+    para (i<-0 hasta  i< hacer longitud; i++){
+        para  (j < hasta  0; hacer j<26;j++){
+            SI (arreglo[i] == j){
+                Escribir '%c',alfabeto[j]);
+                cadenaCodSI icada[i] <- alfabeto[j];
+            }
+        } 
+    }
+    
+    return cadenaCodSI icada;
+}
+//Termina Tratamiento Atbash
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+//Realiza el doble cSI rado de una cadena
+Procedimiento dobleCSI rado(){
+    Entero tam<-0,i; //i : recorre el vetor, tam: obitiene el tamaño del vector Enteroroducido
+    Entero p;      //Para recor hasta er  hacer a matriz 
+    Entero q;      //Para recor hasta er  hacer a matriz 
+    Caracter arrDobleCSI rado[3][26]<-{{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'},
+                                {'F','R','J','O','Y','D','I','Q','T','Z','S','L','M','E','U','N','B','K','W','A','H','P','C','X','G','V'},
+                                {'H','T','R','V','Z','D','I','Q','J','Y','P','E','L','M','U','B','N','K','A','W','F','S','X','C','G','O'}};
+    Escribir '--DOBLE CSI RADO--'
+
+    Escribir '--TABLA DOBLE CSI RADO--'
+
+    para  (p < hasta  0; hacer p < 3; p++)
+    {
+        para  (q < hasta  0; hacer q < 26; q++)
+        {
+          Escribir '%c',arrDobleCSI rado[p][q]);
+
+        }
+         
+    }
+         
+    
+
+    Caracter cSI rado[tam];
+    Caracter cSI radoTem[tam];
+
+    Escribir 'Enteroroduce texto:'
+    Leer (cSI rado);
+    tam <- strlen(cSI rado);
+    SI (espacioVaciosValidar(cSI rado,tam)==0  || verificaCadenaSinNumero(arr)==0){
+
+ 
+    
+    Escribir '--Texto Enteroroducido--'
+    Escribir '> %s',cSI rado);
+//sSI rado uno
+Escribir '--SSI rado uno--'
+    para  (i < hasta  0; hacer i < tam; i++){
+        cSI radoTem[i]<-regresaSSI radoUno(toupper(cSI rado[i]),arrDobleCSI rado);
+    }
+    Escribir '> %s',cSI radoTem);
+//sSI rado dos
+    Escribir '--SSI rado dos--'
+    para  (i < hasta  0; hacer i < tam; i++){
+       cSI rado[i]<- regresaSSI radoDos(toupper(cSI radoTem[i]),arrDobleCSI rado);
+       
+    }
+    Escribir '> %s',cSI rado);
+    
+    Escribir 'Apartir de aqui vamos a decSI rar el mensaje >'
+    para (i<-0 hasta  i  hacer  tam; i++){
+        Escribir '%c',cSI rado[i]); 
+    }
+    
+    para  (i < hasta  0; hacer i < tam; i++){
+       cSI rado[i]<- regresaDecSI radoDos(toupper(cSI rado[i]),arrDobleCSI rado);
+    }
+    Escribir 'DecSI rado dos al uno >'
+    para (i<-0 hasta  i  hacer  tam; i++){
+        Escribir '%c',cSI rado[i]); 
+    }
+    Escribir 'DecSI rado del uno a texto normal >'
+    para (i<-0 hasta  i  hacer  tam; i++){
+        cSI rado[i]<- regresaDecSI radoUno(toupper(cSI rado[i]),arrDobleCSI rado);
+    }
+    para (i<-0 hasta  i  hacer  tam; i++){
+        Escribir '%c',cSI rado[i]); 
+    }
+   }SINO{
+            Escribir 'Tienes espacios'
+   }
+}
+//Obiene el valor de la letra, deacuerdo a su valor de abajo
+Caracter regresaSSI radoUno(Caracter buscado,Caracter arr[3][26]){
+Entero i;
+Caracter a<-'*';
+    para (i<-0 hasta i<2 hacer ;i++){
+      SI ( buscado==arr[0][i]){
+          a<- arr[1][i];
+      } 
+    }
+return a;
+}
+//Obiene el valor de la letra, deacuerdo a su valor de abajo
+Caracter regresaSSI radoDos(Caracter buscado,Caracter arr[3][26]){
+	Entero i;
+	Caracter a<-'*';
+	    para (i<-0 hasta i<2 hacer ;i++){
+	      SI ( buscado==arr[1][i]){
+	          a<- arr[2][i];
+	      } 
+	    }
+	return a;
+}
+//Obiene el valor de la letra, deacuerdo a su valor de arriba
+Caracter regresaDecSI radoDos(Caracter buscado,Caracter arr[3][26]){
+    Entero i;
+	Caracter a<-'*';
+	    para (i<-0 hasta i<2 hacer ;i++){
+	      SI ( buscado==arr[2][i]){
+	          a<-arr[1][i];
+	      } 
+	    }
+	return a;
+}
+//Obiene el valor de la letra, deacuerdo a su valor de arriba
+Caracter regresaDecSI radoUno(Caracter buscado,Caracter arr[3][26]){
+    Entero i;
+	Caracter a<-'*';
+	    para (i<-0 hasta i<2 hacer ;i++){
+	      SI ( buscado==arr[1][i]){
+	          a<-arr[0][i];
+	      } 
+	    }
+	return a;
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//funcion que valida que la cadena no tenga espacios
+Entero espacioVaciosValidar(Caracter a[],Entero tam ){
+    Entero i,j<-0;
+    para (i<-0 hasta i<t hacer m;i++){
+            SI (a[i]==' '){
+                j<- 1;
+            }
+    }
+    return j;
+}
+//Esta funcion regresa una cadena en mayusculas, le ponemos al princio Caracter* para que r hasta gre hacer e la cadena completa y no solo u carater
+//toupper funciona para hacer hasta que hacer cada cacter se convierta a mayuscula
+Caracter* convierteCadenaMayusculas(Caracter cadena[],Entero longitudCadena){ 
+    Entero i;
+    para  (i<- hasta ;i< hacer ongitudCadena;i++){
+		cadena[i] <- toupper(cadena[i]);
+	}
+    return cadena;
+}
+//verificaCadenaS cadena no tenga numeros
+Entero verificaCadenaSinNumero(arr)(Caracter cadena[],Entero longitudCadena){
+	Entero i,j<-0;
+    para (i<-0 hasta i<l hacer ngitudCadena;i++){
+            SI (cadena[i]==0||cadena[i]==1||cadena[i]==2||cadena[i]==3||cadena[i]==4||cadena[i]==5||cadena[i]==6||cadena[i]==7||cadena[i]==8||cadena[i]==9||cadena[i]==10){
+                j<- 1;
+            }
+    }
+    return j;
+}
